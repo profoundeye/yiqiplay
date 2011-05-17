@@ -1,0 +1,82 @@
+设定数据库的参数：
+hostname: localhost
+port: 3306
+administrator: root
+password: （无）
+
+建立数据库 yiqiplay
+
+在该数据库中建立以下五张数据表，建表命令如下：
+
+CREATE TABLE `user` (
+  `uid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(200) NOT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `isregister` tinyint(1) NOT NULL DEFAULT '0',
+  `gender` tinyint(1) NOT NULL DEFAULT '2',
+  `age` tinyint(4) unsigned DEFAULT '0',
+  `birthday` bigint(20) unsigned DEFAULT '0',
+  `homeid` bigint(20) DEFAULT '-1',
+  `snstype` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `snsuid` varchar(250) NOT NULL,
+  `extend` text NOT NULL,
+  PRIMARY KEY (`uid`),
+  KEY `age` (`age`),
+  KEY `isregister` (`isregister`),
+  KEY `homeid` (`homeid`),
+  KEY `snstype` (`snstype`),
+  KEY `snsuid` (`snsuid`),
+  KEY `gender` (`gender`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8
+
+CREATE TABLE `keyindex` (
+  `word` varchar(50) NOT NULL,
+  `mid` bigint(20) NOT NULL,
+  `uhomeid` bigint(20) unsigned NOT NULL,
+  `mlocid` bigint(20) unsigned NOT NULL,
+  `extend` text,
+  PRIMARY KEY (`word`,`mid`),
+  KEY `uhomeid` (`uhomeid`),
+  KEY `mlocid` (`mlocid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 PACK_KEYS=0
+
+CREATE TABLE `keyword` (
+  `kid` bigint(20) NOT NULL AUTO_INCREMENT,
+  `word` varchar(50) NOT NULL,
+  `type` tinyint(4) NOT NULL DEFAULT '0',
+  `extend` text,
+  PRIMARY KEY (`kid`),
+  KEY `word` (`word`),
+  KEY `type` (`type`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8
+
+CREATE TABLE `location` (
+  `lid` int(10) NOT NULL AUTO_INCREMENT,
+  `province` varchar(20) NOT NULL DEFAULT '',
+  `city` varchar(20) NOT NULL DEFAULT '',
+  `county` varchar(20) NOT NULL DEFAULT '',
+  `point` varchar(400) NOT NULL DEFAULT '',
+  `extend` text,
+  PRIMARY KEY (`lid`),
+  KEY `province` (`province`),
+  KEY `city` (`city`),
+  KEY `county` (`county`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
+
+CREATE TABLE `message` (
+  `mid` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `snstype` tinyint(1) unsigned NOT NULL,
+  `snsmid` varchar(200) NOT NULL,
+  `snsuid` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `uhomeid` bigint(20) NOT NULL DEFAULT '-1',
+  `locid` bigint(20) NOT NULL DEFAULT '-1',
+  `extend` text,
+  PRIMARY KEY (`mid`),
+  KEY `snstype` (`snstype`),
+  KEY `snsmid` (`snsmid`),
+  KEY `snsuid` (`snsuid`),
+  KEY `uhomeid` (`uhomeid`),
+  KEY `locid` (`locid`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8
+
