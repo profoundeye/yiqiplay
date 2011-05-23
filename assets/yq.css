@@ -1,5 +1,43 @@
-﻿#a
+﻿body{
+	background:#C3F0F6;	
+	}
+	
+#follow_us{
+	width:100%;
+	height:30px;
+	background:#555555;
+	text-align:center;
+	text-indent:720px;
+	line-height:30px;
+	display:block;
+	}
+#follow_us a{
+	color:#FFF;
+	font-size:14px;
+	
+	}
 
+#foot{
+	background:#555555;
+	height:80px;
+	text-align:center;
+	color:#FFF;
+	font-size:14px;
+	display:block;
+	width:100%;
+	padding-top:15px;
+	}
+	
+.main{
+	height:585px;
+	width:100%;
+	background:url(1.png) repeat-x;
+}
+#accredit{
+	height:585px;
+	text-indent:-9999000px;
+	background:url(0.gif) no-repeat 50% 50%;
+	}
 /*
 KISSY CSS Reset
 理念：1. reset 的目的不是清除浏览器的默认样式，这仅是部分工作。清除和重置是紧密不可分的。
