@@ -1,5 +1,5 @@
 <?php
-include_once("weibooauth.php");
+include_once("Oauth.php");
 
 
 /** 
