@@ -48,6 +48,137 @@
 	width:1000px;
 	margin:0 auto;
 	}
+.step{
+	display:block;
+	width:610px;
+	margin:0px auto;
+	padding:30px;
+	overflow:hidden;
+	}
+	.step_1{
+		height:230px;
+		}
+	.step_1 em,.step_2 em{
+		display:block;
+		height:35px;
+		font-size:15px;
+	}
+	.step_2{
+		height:135px;
+	}
+	.dowhat{
+		width:480px;
+		height:70px;
+		background:url(inputwhat.png) no-repeat center center;
+		padding:10px;
+		border:0;
+		padding-left:30px;
+		}
+	.do{
+		height:87px;
+		width:85px;
+		background:url(button.png);
+		border:0;
+		text-indent:-9000px;
+		float:right;
+		}
+	.dotype li{
+		width:200px;
+		height:30px;
+		padding-top:150px;
+		float:left;
+		background:url(bg01.png) no-repeat center center;
+		text-align:center;
+		}
+	.sayhi{
+		height:70px;
+		font-weight:bold;
+		font-size:15px;
+		display:block;
+		}
+	.man-list{
+		overflow:hidden;	
+	}
+	.man-list li{
+		float:left;
+		width:195px;
+		height:75px;
+		}
+	.man-list img{
+		width:50px;
+		height:50px;
+		padding:2px;
+		border:1px solid #ccc;
+		float:left;
+		margin-right:10px;
+		}
+	.man-list em,.man-list span{
+		display:block
+	}
+	.man-list em a{
+		color:#0015b1;
+		font-size:14px;
+	}
+	.man-list span a{
+		color:#666666;
+		font-size:12px;
+	}
+	.hi{
+		text-align:center;
+		margin-top:20px;	
+	}
+	.hi button{
+		width:227px;
+		height:52px;
+		background:url(button2.png);
+		border:0px;
+		text-indent:-10100px;	
+	}
+	.hi span{
+		padding-left:20px;
+		}
+	.xman em{
+		display:block;
+		height:68px;
+		text-indent:-10000px;
+		background:url(title1.png) no-repeat left center;
+		}
+	.xman .t{
+		background:url(bigbg.png) no-repeat center center;
+		height:200px;
+		padding-top:100px;
+		padding-left:20px;
+	}
+
+	.xman textarea{
+		border:0;
+		width:480px;
+		height:70px;
+		background:url(inputwhat.png) no-repeat center center;
+		padding:10px;
+		margin-top:-5px;
+		}
+	.xman .avater{
+		width:80px;
+		height:80px;
+		float:left;
+		}
+		.fb,.xg{
+			width:166px;
+			height:52px;
+			background:url(bj.png) no-repeat;
+			text-indent:-9000px;
+			border:0;
+			float:left;
+			margin-left:10px;
+			margin-top:10px;
+			}
+		.fb{
+			background:url(wb.png) no-repeat;
+			margin-left:233px;
+			float:left;
+		}
+	
 /*
 KISSY CSS Reset
 理念：1. reset 的目的不是清除浏览器的默认样式，这仅是部分工作。清除和重置是紧密不可分的。
