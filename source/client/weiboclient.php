@@ -1,5 +1,5 @@
 <?php
-include_once("Oauth.php");
+include_once(SOURCE."/client/Oauth.php");
 
 
 /** 
