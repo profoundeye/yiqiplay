@@ -2,7 +2,7 @@
 
 session_start();
 include_once( 'config.php' );
-include_once( 'weibooauth.php' );
+include_once( 'weiboclient.php' );
 
 //当前用户的WeiboClient
 $c = new WeiboClient( WB_AKEY , WB_SKEY , $_SESSION['last_key']['oauth_token'] , $_SESSION['last_key']['oauth_token_secret']  );

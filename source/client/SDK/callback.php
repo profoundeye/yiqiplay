@@ -2,7 +2,7 @@
 
 session_start();
 include_once( 'config.php' );
-include_once( 'weibooauth.php' );
+include_once( 'weiboclient.php' );
 
 
 
@@ -11,6 +11,7 @@ $o = new WeiboOAuth( WB_AKEY , WB_SKEY , $_SESSION['keys']['oauth_token'] , $_SE
 $last_key = $o->getAccessToken(  $_REQUEST['oauth_verifier'] ) ;
 //$last_key = array();
 $_SESSION['last_key'] = $last_key;
+print_r($_SESSION['keys']);
 
 echo "<blockquote>";print_r($last_key); echo "</blockquote>";
 if(isset($last_key['oauth_token_secret'])&&isset($last_key['oauth_token']))

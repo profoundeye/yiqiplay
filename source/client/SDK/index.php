@@ -3,7 +3,7 @@
 session_start();
 //if( isset($_SESSION['last_key']) ) header("Location: weibolist.php");
 include_once( 'config.php' );
-include_once( 'weibooauth.php' );
+include_once( 'weiboclient.php' );
 
 $base_url = isset($_SERVER['SCRIPT_URI'])?$_SERVER['SCRIPT_URI']:'http://'.$_SERVER['SERVER_NAME'].YQW_PATH;
 
