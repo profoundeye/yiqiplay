@@ -1,11 +1,11 @@
 <?php
-include_once("weiboclient.php");
-include_once( "config.php" );
-include_once( "../data/message.php" );
-include_once( "../data/user.php" );
-include_once( "../data/location.php" );
-include_once( "../data/keyword.php" );
-include_once( "../data/keyindex.php" );
+include_once(SOURCE."/client/weiboclient.php");
+//include_once( "config.php" );
+include_once( SOURCE."/data/message.php" );
+include_once( SOURCE."/data/user.php" );
+include_once( SOURCE."/data/location.php" );
+include_once( SOURCE."/data/keyword.php" );
+include_once( SOURCE."/data/keyindex.php" );
 
 /***************
    Yiqiplay  微博操作类
