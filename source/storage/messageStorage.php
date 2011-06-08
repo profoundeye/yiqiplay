@@ -1,5 +1,6 @@
 ﻿<?php
 include_once("..\storage\baseStorage.php"); 
+include_once("..\storage\dataCache.php"); 
 include_once("..\data\message.php"); 
 class MessageStorage extends BaseStorage{
 	function insert($message){
@@ -7,23 +8,35 @@ class MessageStorage extends BaseStorage{
 			.", '".$message->getSnsmid()."', '".$message->getSnsuid()."', '"
 			.$message->getContent()."', ".$message->getUhomeid().", ".
 			$message->getLocid().", '')";
-		echo $sql;
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$id = mysql_insert_id();
 		$this->closeConn();
-		if ($result) return $id;
+		if ($result) {
+			$keystr = md5("message".$id);
+			$cache = new DataCache();
+			$message->setMid($id);
+			$cache->set($keystr, $message, 0);
+			return $id;
+		}
 		else return null;
 	}
 		
 	function get($mid){
+		$keystr = md5("message".$mid);
+		$cache = new DataCache();
+		$message = $cache->get($keystr);
+		if ($message != null) {
+			return $message;
+		}
+		
 		$sql = "select * from message where mid=".$mid;
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
-		$message = null;
 		if($ret = mysql_fetch_array($result)) {
 			$message = $this->translate($ret);
+			$cache->set($keystr, $message, 0);
 		}
 		return $message;
 		
@@ -49,6 +62,12 @@ class MessageStorage extends BaseStorage{
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
+		
+		if ($result != null) {
+			$cache = new DataCache();
+			$keystr = md5("message".$message->getMid());
+			$cache->set($keystr, $message, 0);
+		}
 		return $result;
 	}
 	
@@ -57,6 +76,10 @@ class MessageStorage extends BaseStorage{
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
+		
+		$cache = new DataCache();
+		$keystr = md5("message".$mid);
+		$cache->delete($keystr);
 		return $result;	
 	}
 	

@@ -1,29 +1,43 @@
 ﻿<?php
 include_once("..\storage\baseStorage.php"); 
 include_once("..\data\user.php"); 
+include_once("..\storage\dataCache.php"); 
 class UserStorage extends BaseStorage{
 
 	function insert($user){
 		$sql = "insert into user values(DEFAULT,'".$user->getUsername()."','"
 			.$user->getPassword()."',".$user->getIsregister().",".$user->getGender().","
-			.$user->getAge().",".$user->getBirthday().",".$user->getHomeid().",".
-			$user->getSnstype().",'".$user->getSnsuid()."','')";
-		$conn = $this->getConn();		
+			.$user->getAge().",".$user->getBirthday().",".$user->getHomeid().","
+			.$user->getSnstype().",'".$user->getSnsuid()."','')";
+		$conn = $this->getConn();
 		$result = mysql_query($sql, $conn);
 		$id = mysql_insert_id();
 		$this->closeConn();
-		if ($result) return $id;
+		if ($result) {
+			$keystr = md5("user".$id);
+			$cache = new DataCache();
+			$user->setUid($id);
+			$cache->set($keystr, $user, 0);
+			return $id;
+		}
 		else return null;
 	}
 	
 	function get($uid){
+		$keystr = md5("user".$uid);
+		$cache = new DataCache();
+		$user = $cache->get($keystr);
+		if ($user != null){
+			return $user;
+		}
+		
 		$sql = "select * from user where uid=".$uid;
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
-		$user = null;
 		if($ret = mysql_fetch_array($result)) {
 			$user = $this->translate($ret);
+			$cache->set($keystr, $user, 0);
 		}
 		return $user;
 	}
@@ -35,7 +49,8 @@ class UserStorage extends BaseStorage{
 		$this->closeConn();
 		$userArr = array();
 		while($ret = mysql_fetch_array($result)) {
-			array_push($userArr, $this->translate($ret));
+			$user = $this->translate($ret);
+			array_push($userArr, $user);
 		}
 		return $userArr;
 	}
@@ -49,6 +64,12 @@ class UserStorage extends BaseStorage{
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
+		
+		if ($result != null) {
+			$cache = new DataCache();
+			$keystr = md5("user".$user->getUid());
+			$cache->set($keystr, $user, 0);
+		}
 		return $result;
 	}
 	
@@ -57,6 +78,10 @@ class UserStorage extends BaseStorage{
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
+		
+		$cache = new DataCache();
+		$keystr = md5("user".$uid);
+		$cache->delete($keystr);
 		return $result;
 	}
 	
