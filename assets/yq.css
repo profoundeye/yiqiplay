@@ -38,6 +38,16 @@
 	text-indent:-9999000px;
 	background:url(0.gif) no-repeat 50% 50%;
 	}
+	.accredit_sina{
+		height:24px;
+		width:103px;
+		background:url(ico_sina_103x24.png) no-repeat;
+		display:block;
+		position:absolute;
+		right:280px;
+		top:390px;
+		
+		}
 #m_head{
 	text-indent:-1000px;
 	background:url(3.png) no-repeat center;;

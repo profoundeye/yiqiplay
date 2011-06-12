@@ -6,7 +6,6 @@ include_once( SOURCE."/data/user.php" );
 include_once( SOURCE."/data/location.php" );
 include_once( SOURCE."/data/keyword.php" );
 include_once( SOURCE."/data/keyindex.php" );
-
 /***************
    Yiqiplay  微博操作类
 ****************/
@@ -270,6 +269,4 @@ class YiqiplayClient
 	 
 	
 }
-
-
 ?>
