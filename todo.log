@@ -2,3 +2,7 @@
 2 step2.html 金总
 3 step3.html 张巍
 6月13日，进行会面，整合页面做联调
+
+
+@will(conqu)
+1.判断用户是否已经有access token的逻辑需要封装，目前的方式可读性不好。

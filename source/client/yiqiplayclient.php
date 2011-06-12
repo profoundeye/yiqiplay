@@ -46,7 +46,7 @@ class YiqiplayClient
 	 }
 
 	/**
-	 * 
+	 *  获取用户的AcessToken：使用Callback页面获取的token/secret/verifier获取用户的AccessToken
 	 */	 
 	 public static function getAccessToken($oauth_token, $oauth_token_secret, $oauth_verifier)
 	 {
@@ -56,6 +56,43 @@ class YiqiplayClient
 
 		return $last_key;
 	 }	
+	 
+	/**
+	 *  判断用户是否已经微博授权
+	 *  return array();
+	 *  用户已经授权给Yiqiplay，数据库中有信息则返回已经存储的token和secret
+	 *  用户授权给Yiqiplay，正在callback页面，则直接验证，返回token和secret
+	 *  用户尚未授权，需要提供AuthURL
+	 */	
+
+	 public static function hasWeiboAuth( $arr_request,$arr_session )
+	 {
+		$result = array();
+		
+		
+		if(isset($arr_request['oauth_verifier']))
+		{
+			// 用户正在Callback页面
+			$result['accessKey'] = $this->getAccessToken($_SESSION['keys']['oauth_token'] , $_SESSION['keys']['oauth_token_secret'],$_REQUEST['oauth_verifier']);
+			$result['value'] = true;
+		}elseif ( isset($arr_session['accessKey'])){
+			// 用户已经授权,session中有accessKey, 验证有效性,返回token/secret
+			$tmp_WBclient = new WeiboClient( WB_AKEY , WB_SKEY , $arr_session['accessKey']['oauth_token'] , $arr_session['accessKey']['oauth_token_secret']); 
+			$verifyMsg = $tmp_WBclient->verify_credentials();
+			if (isset($verifyMsg['name']))
+			{
+				$result['value'] = true;
+				$result['accessKey'] = $arr_session['accessKey'];
+			}
+		}else {
+			// 该用户session中的accessKey失效 or 没有授权给Yiqiplay 
+				$result['value'] = false;
+				$result['aurl'] = $this->getAuthURL("http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME']);
+		}
+		
+		return $result;
+	 
+	 }
 	
 	/**
 	 * 获取当前授权用户用户身份信息 & 写入注册用户信息库
@@ -74,7 +111,7 @@ class YiqiplayClient
 		$yquser->setHomeid($arr_user['province']*1000+$arr_user['city']);
 		$yquser->setSnstype(SNSTYPE_SINA);
 		$yquser->setSnsuid($arr_user['id']);
-		
+		$yquser->setExtend(json_encode($arr_user));		
 		
 		return $yquser;	 
 
@@ -97,6 +134,7 @@ class YiqiplayClient
 		$yquser->setHomeid($arr_user['province']*1000+$arr_user['city']);
 		$yquser->setSnstype(SNSTYPE_SINA);
 		$yquser->setSnsuid($arr_user['id']);
+		$yquser->setExtend(json_encode($arr_user));
 		
 		
 		return $yquser;
@@ -153,6 +191,7 @@ class YiqiplayClient
 	 }
 	/**
 	 * 一起Play官方微博发布求伴微博
+	 Todo:
 	 */
 	/**
 	 * 搜索关键词 - 直接调用搜索接口，有权限限制，可能失败
