@@ -16,3 +16,4 @@ user:
 	新浪微博 province 和 city 是两个值， 怎么处理　Uhomeid， 目前是 province*1000 + city
 	age: 微博user没有age属性
 
+Locid 需要一个search的方法。
