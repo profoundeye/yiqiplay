@@ -2,21 +2,29 @@
 <?php
 
 session_start();
-include_once('yiqiplayclient.php');
+include_once("../../config.php");
+include_once(SOURCE."/client/yiqiplayclient.php");
 
 
-if( !isset($_REQUEST['oauth_verifier']) )
+print_r($_SESSION);
+
+print_r($_REQUEST);
+
+
+$verifyUser = YiqiplayClient::hasWeiboAuth($_REQUEST,$_SESSION);
+print_r($verifyUser);
+
+if( !$verifyUser['value'] )
 {
-	echo "<a href=\"".YiqiplayClient::getAuthURL('http://127.0.0.1/weibodemo/testYiqiplayclient.php')."\">click here </a>";
+	echo "<a href=\"".$verifyUser['aurl']."\">click here </a>";
 	exit();
-}
-//print_r($_SESSION['keys']);
+} else {
 
-if( !isset($_SESSION['accessKey']))
-{
-	$_SESSION['accessKey'] = $accessKey = YiqiplayClient::getAccessToken($_SESSION['keys']['oauth_token'] , $_SESSION['keys']['oauth_token_secret'],$_REQUEST['oauth_verifier']);
-	print_r($_SESSION['accessKey']);
+	$_SESSION['accessKey'] = $accessKey = $verifyUser['accessKey'];
+
 }
+
+
 $yqp = new YiqiplayClient($_SESSION['accessKey']['oauth_token'],$_SESSION['accessKey']['oauth_token_secret']);
 print_r($yqp->verify_credentials());
 // echo "<br /><br /><br /><br /><br />";

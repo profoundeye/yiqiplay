@@ -10,6 +10,7 @@ class User{
 	private $homeid = -1;
 	private $snstype = 0;
 	private $snsuid = "";
+	private $extend = "";
 
 	function setUid($uid){
 		$this->uid = $uid;
@@ -89,6 +90,13 @@ class User{
 
 	function setSnsuid($snsuid){
 		$this->snsuid = $snsuid;
+	}
+	function getExtend(){ // add by will.zhang , 微博用户的原始数据存入Extend字段
+		return $this->extend;
+	}
+
+	function setExtend($extend){
+		$this->extend = $extend;
 	}
 	
 	function toString(){
