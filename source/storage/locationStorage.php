@@ -1,5 +1,6 @@
 ﻿<?php
 include_once("..\storage\baseStorage.php"); 
+include_once("..\storage\dataCache.php"); 
 include_once("..\data\location.php"); 
 class LocationStorage extends BaseStorage{
 	
@@ -9,18 +10,32 @@ class LocationStorage extends BaseStorage{
 			."' , '".$location->getCounty()."' , '".$location->getPoint()."' , '')";
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
+		$id = mysql_insert_id();
 		$this->closeConn();
+		if ($result) {
+			$keystr = md5("location".$id);
+			$cache = new DataCache();
+			$location->setLid($id);
+			$cache->set($keystr, $location, 0);
+			return $id;
+		}
 		return $result;
 	}
 
 	function get($lid){
+		$keystr = md5("location".$lid);
+		$cache = new DataCache();
+		$location = $cache->get($keystr);
+		if ($location != null) {
+			return $location;
+		}
 		$sql = "select * from location where lid=".$lid;
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
-		$location = null;
 		if($ret = mysql_fetch_array($result)) {
 			$location = $this->translate($ret);
+			$cache->set($keystr, $location, 0);
 		}
 		return $location;
 	}
@@ -32,7 +47,11 @@ class LocationStorage extends BaseStorage{
 		$this->closeConn();
 		$locationArr = array();
 		while($ret = mysql_fetch_array($result)) {
-			array_push($locationArr, $this->translate($ret));
+			$location = $this->translate($ret);
+			$keystr = md5("location".$location->getLid());
+			array_push($locationArr, $location);
+			$cache = new DataCache();
+			$cache->set($keystr, $location, 0);
 		}
 		return $locationArr;
 	}
@@ -44,6 +63,12 @@ class LocationStorage extends BaseStorage{
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
+		
+		if ($result != null) {
+			$cache = new DataCache();
+			$keystr = md5("location".$location->getLid());
+			$cache->set($keystr, $location, 0);
+		}
 		return $result;
 	}
 	
@@ -52,6 +77,10 @@ class LocationStorage extends BaseStorage{
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
+		
+		$cache = new DataCache();
+		$keystr = md5("location".$lid);
+		$cache->delete($keystr);
 		return $result;
 	}
 	
