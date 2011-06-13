@@ -14,7 +14,7 @@ class UserStorage extends BaseStorage{
 		$id = mysql_insert_id();
 		$this->closeConn();
 		if ($result) {
-			$keystr = md5("user".$id);
+			$keystr = md5("user".$user->getSnstype().$user->getSnsuid());
 			$cache = new DataCache();
 			$user->setUid($id);
 			$cache->set($keystr, $user, 0);
@@ -24,20 +24,12 @@ class UserStorage extends BaseStorage{
 	}
 	
 	function get($uid){
-		$keystr = md5("user".$uid);
-		$cache = new DataCache();
-		$user = $cache->get($keystr);
-		if ($user != null){
-			return $user;
-		}
-		
 		$sql = "select * from user where uid=".$uid;
 		$conn = $this->getConn();		
 		$result = mysql_query($sql, $conn);
 		$this->closeConn();
 		if($ret = mysql_fetch_array($result)) {
 			$user = $this->translate($ret);
-			$cache->set($keystr, $user, 0);
 		}
 		return $user;
 	}
@@ -67,7 +59,7 @@ class UserStorage extends BaseStorage{
 		
 		if ($result != null) {
 			$cache = new DataCache();
-			$keystr = md5("user".$user->getUid());
+			$keystr = md5("user".$user->getSnstype().$user->getSnsuid());
 			$cache->set($keystr, $user, 0);
 		}
 		return $result;
@@ -80,7 +72,7 @@ class UserStorage extends BaseStorage{
 		$this->closeConn();
 		
 		$cache = new DataCache();
-		$keystr = md5("user".$uid);
+		$keystr = md5("user".$user->getSnstype().$user->getSnsuid());
 		$cache->delete($keystr);
 		return $result;
 	}
@@ -97,6 +89,29 @@ class UserStorage extends BaseStorage{
 		$user->setHomeid($ret["homeid"]);
 		$user->setSnstype($ret["snstype"]);
 		$user->setSnsuid($ret["snsuid"]);
+		return $user;
+	}	
+	
+	/**
+	 * find a user given snstype and snsuid
+	 */
+	function findSnsUser($snstype, $snsuid){
+		$keystr = md5("user".$snstype.$snsuid);
+		$cache = new DataCache();
+		$user = $cache->get($keystr);
+		if ($user != null){
+			return $user;
+		}
+		
+		$sql = "select * from user where snstype=".$snstype.", snsuid='"
+			.$snsuid."'";
+		$conn = $this->getConn();		
+		$result = mysql_query($sql, $conn);
+		$this->closeConn();
+		if($ret = mysql_fetch_array($result)) {
+			$user = $this->translate($ret);
+			$cache->set($keystr, $user, 0);
+		}
 		return $user;
 	}
 }

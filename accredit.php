@@ -6,7 +6,7 @@ session_start();
 
 if( !isset($_REQUEST['oauth_verifier']) )
 {
-	echo "<a href=\"".YiqiplayClient::getAuthURL('http://127.0.0.1/weibodemo/testYiqiplayclient.php')."\">click here </a>";
+	echo "<a href=\"".YiqiplayClient::getAuthURL('http://127.0.0.1/source/client/testYiqiplayclient.php')."\">click here </a>";
 	exit();
 }
 
