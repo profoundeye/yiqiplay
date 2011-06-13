@@ -3,7 +3,9 @@ include_once('config.php');
 //if( isset($_SESSION['last_key']) ) header("Location: weibolist.php");
 if( !isset($_REQUEST['oauth_verifier']) )
 {
+
 	$accredit_href = YiqiplayClient::getAuthURL('http://localhost/yiqiplay/index.php');
+
 }
 ?>
 <!DOCTYPE HTML>

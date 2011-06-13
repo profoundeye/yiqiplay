@@ -102,7 +102,6 @@ class YiqiplayClient
 		
 		$yquser = new User();
 		
-		$yquser->setUid($arr_user['id']);
 		$yquser->setUsername($arr_user['name']);
 		$yquser->setGender($arr_user['gender']);
 		$yquser->setAge(-1); // no age for sina weibo
