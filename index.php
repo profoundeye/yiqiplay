@@ -15,13 +15,10 @@ if(!isset($_SESSION['accessKey'])){
 
 	}
 	
-	echo "session set:<br/>";
-	print_r($accessKey);
-	//header('Location: step1.php');
+	header('Location: step1.php');
 	
 }else{
-	echo "no session set";
-	//header('Location: accredit.php');
+	header('Location: accredit.php');
 	
 }
 ?>
