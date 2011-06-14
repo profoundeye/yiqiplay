@@ -28,8 +28,8 @@ if(isset($_POST['WeiboContent']))
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>一起玩</title>
-<link type="text/css" rel="stylesheet" href="../assets/yq.css" />
-<script src="../assets/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="assets/yq.css" />
+<script src="assets/jquery.min.js"></script>
 </head>
 <body>
 <p id="follow_us"><a href="">关注@一起play</a></p>
@@ -43,7 +43,7 @@ if(isset($_POST['WeiboContent']))
 		$cur_user_raw = json_decode($cur_user->getExtend()); 
 		?>
             <img class="avater" src="<?php echo $cur_user_raw->profile_image_url?>" />
-            <textarea name="WeiboContent">@一起play:我想去火星，有人愿意一起吗？</textarea>
+            <textarea name="WeiboContent">@一起play:<?echo $_GET['dotype'];echo "&nbsp;";echo $_GET['ido'];?>，有人愿意一起吗？</textarea>
 			<button class="fb" type="submit">发布计划</button>
             <button class="xg" type="button" onclick="javascript:window.location.href='index.php'">修改计划</button>
          </div>

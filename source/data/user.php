@@ -15,7 +15,7 @@ class User{
 	private $extend = "";
 	
 	function getProfileUrl(){
-		if ($snstype == SNSTYPE_SINA) {
+		if ($this->snstype == SNSTYPE_SINA) {
 			return SINA_BASEURL.$this->snsuid;
 		}
 	}

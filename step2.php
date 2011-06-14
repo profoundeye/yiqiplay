@@ -2,7 +2,8 @@
 
 include_once('config.php');
 include_once('.\source\service\searchService.php');
-session_start();
+include_once(SOURCE.'\data\user.php');
+include_once(SOURCE.'\data\message.php');
 if(!isset($_SESSION['accessKey'])){
 	header('Location: accredit.php');
 }
@@ -17,8 +18,8 @@ if( isset($_REQUEST["ido"])) {
 	$wish = $_REQUEST["ido"];
 }
 
-echo "act=".$acttype."<br/>";
-echo "wish=".$wish."<br/>";
+//echo "act=".$acttype."<br/>";
+//echo "wish=".$wish."<br/>";
 
 $oAuthToken = $_SESSION['accessKey']['oauth_token'];
 $oAuthTokenSecret = $_SESSION['accessKey']['oauth_token_secret'];
@@ -26,7 +27,8 @@ $oAuthTokenSecret = $_SESSION['accessKey']['oauth_token_secret'];
 $searchService = new SearchService();
 
 $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish);
-print_r($msgarr);	
+
+//var_dump($msgarr);	
 
 ?>
 
@@ -36,8 +38,8 @@ print_r($msgarr);
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>一起玩</title>
-<link type="text/css" rel="stylesheet" href="/assets/yq.css" />
-<script src="/assets/jquery.min.js"></script>
+<link type="text/css" rel="stylesheet" href="assets/yq.css" />
+<script src="assets/jquery.min.js"></script>
 </head>
 <body>
 <p id="follow_us"><a href="">关注@一起play</a></p>
@@ -48,11 +50,11 @@ print_r($msgarr);
 	<em class="sayhi">一起play为你找到了以下城玩伴，他们也和你一样想去玩</em>
     <ul class="man-list">
 
-	<?foreach($msgarr as $m){ ?>
+	<?foreach($msgarr as $m){ $user=$m->getUser();?>
     	<li>
-        	<a href="$m">
-        		<img src="1.jpg" />
-            	<em><a >晓千在杭州</a></em>
+        	<a href="<?=$user->getProfileUrl()?>">
+        		<img src="<?=$user->getSnsproimg()?>" />
+            	<em><?=$user->getUsername()?></em>
                 <span>浙江，杭州</span>
             </a>
         </li>
@@ -60,7 +62,7 @@ print_r($msgarr);
     </ul>
      <div class="hi">
      	<button type="submit" >say hi，和玩伴们组团</button>
-        <span><a href="step3.php?ido=<?=$wish?>">算了，让我继续孤独吧</a></span>
+        <span><a href="step3.php?ido=<?=$wish?>&dotype=<?=$acttype?>">算了，让我继续孤独吧</a></span>
      </div>
 </div>
 </form>

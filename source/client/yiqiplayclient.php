@@ -206,14 +206,7 @@ class YiqiplayClient
 		foreach ( $search_list as $key => $arr_wb)
 		{
 		
-			$tmp_wb = new Message();
-			$tmp_wb->setMid($arr_wb['mid']);
-			$tmp_wb->setSnstype(SNSTYPE_SINA);
-			$tmp_wb->setSnsmid($arr_wb['mid']);
-			$tmp_wb->setSnsuid($arr_wb['user']['id']);
-			$tmp_wb->setContent($arr_wb['text']);
-			$tmp_wb->setUhomeid($arr_wb['user']['province']*1000 + $arr_wb['user']['city']); 
-			$tmp_wb->setLocid($arr_wb['geo']['coordinates'][0].'|'.$arr_wb['geo']['coordinates'][1]);
+			$tmp_wb = $this->translateMessage($arr_wb);
 			
 			$arr_message[$key] = $tmp_wb;
 			unset($tmp_wb);
