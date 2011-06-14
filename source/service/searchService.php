@@ -1,5 +1,5 @@
 ﻿<?php
-include_once("../client/yiqiplayclient.php");
+include_once("SOURCE/client/yiqiplayclient.php");
 
 class SearchService{
 
