@@ -5,7 +5,7 @@ include_once('config.php');
 
 session_start();
 
-if(isset($_SESSION['accessKey'])&&isset($_REQUEST['oauth_verifier'])){
+if(!isset($_SESSION['accessKey'])){
 
 	//初始化微波对象
 	
