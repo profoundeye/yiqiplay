@@ -72,7 +72,7 @@ class YiqiplayClient
 		if(isset($arr_request['oauth_verifier']))
 		{
 			// 用户正在Callback页面
-			$result['accessKey'] = $this->getAccessToken($_SESSION['keys']['oauth_token'] , $_SESSION['keys']['oauth_token_secret'],$_REQUEST['oauth_verifier']);
+			$result['accessKey'] = self::getAccessToken($_SESSION['keys']['oauth_token'] , $_SESSION['keys']['oauth_token_secret'],$_REQUEST['oauth_verifier']);
 			$result['value'] = true;
 		}elseif ( isset($arr_session['accessKey'])){
 			// 用户已经授权,session中有accessKey, 验证有效性,返回token/secret
@@ -86,7 +86,7 @@ class YiqiplayClient
 		}else {
 			// 该用户session中的accessKey失效 or 没有授权给Yiqiplay 
 				$result['value'] = false;
-				$result['aurl'] = $this->getAuthURL("http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME']);
+				$result['aurl'] = self::getAuthURL("http://".$_SERVER['SERVER_NAME'].$_SERVER['SCRIPT_NAME']);
 		}
 		
 		return $result;
