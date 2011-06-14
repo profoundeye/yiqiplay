@@ -64,7 +64,7 @@ class YiqiplayClient
 	 *  用户尚未授权，需要提供AuthURL
 	 */	
 
-	 public static function hasWeiboAuth( $callback_URL )
+	 public static function hasWeiboAuth( $callback_URL = MY_CHECKING)
 	 {
 		$result = array();
 		

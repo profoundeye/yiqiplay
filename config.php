@@ -1,5 +1,8 @@
 <?php
 define("SOURCE",dirname($_SERVER['SCRIPT_FILENAME']).'/source/');
+define("MY_URL","http://localhost");
+define("MY_CHECKING",MY_URL."/yiqiplay/index.php");
+
 define("YQW_PATH",'/weibodemo'); //App Path
 include_once(SOURCE.'/client/yiqiplayclient.php');
 session_start();
