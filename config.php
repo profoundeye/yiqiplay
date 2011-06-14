@@ -12,6 +12,7 @@ session_start();
 
 //1. yiqiplayclient 常量定义
 define("SNSTYPE_SINA","1");
+define("SINA_BASEURL","http://weibo.com/");
 // 设置App的Key和Secret
 define( "WB_AKEY" , '2315480230' ); //key from xweibo 
 define( "WB_SKEY" , '23764bff018fd54abba5e277d95adcb9' );

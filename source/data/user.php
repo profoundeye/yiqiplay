@@ -10,7 +10,15 @@ class User{
 	private $homeid = -1;
 	private $snstype = 0;
 	private $snsuid = "";
+	private $snsnick = "";
+	private $snsproimg = "";
 	private $extend = "";
+	
+	function getProfileUrl(){
+		if ($snstype == SNSTYPE_SINA) {
+			return SINA_BASEURL.$this->snsuid;
+		}
+	}
 
 	function setUid($uid){
 		$this->uid = $uid;
@@ -90,6 +98,22 @@ class User{
 
 	function setSnsuid($snsuid){
 		$this->snsuid = $snsuid;
+	}
+	
+	function getSnsnick(){
+		return $this->snsnick;
+	}
+	
+	function setSnsnick($snsnick){
+		$this->snsnick = $snsnick;
+	}
+	
+	function getSnsproimg(){
+		return $this->snsproimg;
+	}
+	
+	function setSnsproimg($snsproimg){
+		$this->snsproimg = $snsproimg;
 	}
 	function getExtend(){ // add by will.zhang , 微博用户的原始数据存入Extend字段
 		return $this->extend;

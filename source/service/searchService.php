@@ -1,6 +1,6 @@
 ﻿<?php
-
 include_once(SOURCE."/client/yiqiplayclient.php");
+
 
 class SearchService{
 

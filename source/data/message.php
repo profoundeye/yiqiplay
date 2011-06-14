@@ -1,4 +1,6 @@
 ﻿<?php
+
+include_once( SOURCE."/data/user.php" );
 class Message{
 	private $mid;
 	private $snstype = 0;
@@ -7,6 +9,7 @@ class Message{
 	private $content = "";
 	private $uhomeid = -1;
 	private $locid = -1;
+	private $user = null;
 	
 	function setMid($mid){
 		$this->mid = $mid;
@@ -62,6 +65,14 @@ class Message{
 	
 	function getLocid(){
 		return $this->locid;
+	}
+	
+	function setUser($user){
+		$this->user = $user;
+	}
+	
+	function getUser(){
+		return $this->user;
 	}
 	
 	function toString(){

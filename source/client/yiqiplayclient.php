@@ -238,15 +238,7 @@ class YiqiplayClient
 		foreach ( $trend_list as $key => $arr_wb)
 		{
 		
-			$tmp_wb = new Message();
-			$tmp_wb->setMid($arr_wb['mid']);
-			$tmp_wb->setSnstype(SNSTYPE_SINA);
-			$tmp_wb->setSnsmid($arr_wb['mid']);
-			$tmp_wb->setSnsuid($arr_wb['user']['id']);
-			$tmp_wb->setContent($arr_wb['text']);
-			$tmp_wb->setUhomeid($arr_wb['user']['province']*1000 + $arr_wb['user']['city']); 
-			$tmp_wb->setLocid($arr_wb['geo']['coordinates'][0].'|'.$arr_wb['geo']['coordinates'][1]);
-			
+			$tmp_wb = translateMessage($arr_wb);			
 			$arr_message[$key] = $tmp_wb;
 			unset($tmp_wb);
 		
@@ -255,6 +247,34 @@ class YiqiplayClient
 		
 		return $arr_message;
 
+	}
+	
+	private function translateUser($wb_user){
+		$user = new User();
+		$user->setUid($wb_user['id']);
+		$user->setUsername($wb_user['name']);
+		$user->setGender($wb_user['gender']);
+		$user->setAge(-1); // no age for sina weibo
+		$user->setBirthday('');// no birthday for sina weibo
+		$user->setHomeid($wb_user['province']*1000+$wb_user['city']);
+		$user->setSnstype(SNSTYPE_SINA);
+		$user->setSnsuid($wb_user['id']);
+		$user->setSnsproimg($wb_user['profile_image_url']);
+		$user->setExtend(json_encode($wb_user));
+		return $user;
+	}
+	
+	private function translateMessage($wb_msg) {
+		$message = new Message();
+		$message->setMid($wb_msg['mid']);
+		$message->setSnstype(SNSTYPE_SINA);
+		$message->setSnsmid($wb_msg['mid']);
+		$message->setSnsuid($wb_msg['user']['id']);
+		$message->setContent($wb_msg['text']);
+		$message->setUhomeid($wb_msg['user']['province']*1000 + $wb_msg['user']['city']); 
+		$message->setLocid($wb_msg['geo']['coordinates'][0].'|'.$wb_msg['geo']['coordinates'][1]);
+		$message->setUser($this->translateUser($wb_msg['user']));
+		return $message;
 	}
 	/**
 	 *  显示对象的状态

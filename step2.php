@@ -1,7 +1,6 @@
 ﻿<?php
 
 include_once('config.php');
-
 include_once('.\source\service\searchService.php');
 session_start();
 if(!isset($_SESSION['accessKey'])){
