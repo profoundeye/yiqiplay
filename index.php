@@ -15,11 +15,13 @@ if(isset($_SESSION['accessKey'])&&isset($_REQUEST['oauth_verifier'])){
 
 	}
 	
-	header('Location: step1.php');
+	echo "session set:<br/>";
+	print_r($accessKey);
+	//header('Location: step1.php');
 	
 }else{
-	
-	header('Location: accredit.php');
+	echo "no session set";
+	//header('Location: accredit.php');
 	
 }
 ?>

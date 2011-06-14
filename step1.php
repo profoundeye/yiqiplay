@@ -1,4 +1,6 @@
 <?
+session_start();
+
 if(isset($_SESSION['accessKey'])&&isset($_REQUEST['oauth_verifier'])){
 	header('Location: index.php');
 }
