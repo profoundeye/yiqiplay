@@ -4,7 +4,7 @@ include_once('config.php');
 if( !isset($_REQUEST['oauth_verifier']) )
 {
 
-	$accredit_href = YiqiplayClient::getAuthURL('http://localhost/index.php');
+	$accredit_href = YiqiplayClient::getAuthURL('http://localhost/yiqiplay/index.php');
 
 }
 ?>

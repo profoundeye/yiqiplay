@@ -1,9 +1,8 @@
 <?
-session_start();
+include_once('config.php');
 
-if(isset($_SESSION['accessKey'])&&isset($_REQUEST['oauth_verifier'])){
-	header('Location: index.php');
-}
+$result = YiqiplayClient::hasWeiboAuth();
+
 ?>
 <!DOCTYPE HTML>
 <html>
