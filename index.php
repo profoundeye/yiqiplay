@@ -5,21 +5,19 @@ include_once('config.php');
 
 session_start();
 
-if(!isset($_SESSION['accessKey'])){
+$verifyUser = YiqiplayClient::hasWeiboAuth();
 
-	//初始化微波对象
-	
-	if( !isset($_SESSION['accessKey'])){
 
-	$_SESSION['accessKey'] = $accessKey = YiqiplayClient::getAccessToken($_SESSION['keys']['oauth_token'] , $_SESSION['keys']['oauth_token_secret'],$_REQUEST['oauth_verifier']);
+if(!$verifyUser['value']){
+	header('Location: accredit.php');
 
-	}
-	
-	header('Location: step1.php');
 	
 }else{
-	header('Location: accredit.php');
-	
+	$_SESSION['accessKey'] = $accessKey = $verifyUser['accessKey'];
+	header('Location: step1.php');
 }
+
+
+//如果验证未通过，直接跳转到授权页
 ?>
 
