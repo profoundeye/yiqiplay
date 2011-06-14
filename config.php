@@ -1,5 +1,5 @@
 <?php
-define("SOURCE",dirname($_SERVER['SCRIPT_FILENAME']).'/source/');
+define("SOURCE",dirname($_SERVER['document_root']).'/source/');
 define("MY_URL","http://localhost");
 define("MY_CHECKING",MY_URL."/yiqiplay/index.php");
 
