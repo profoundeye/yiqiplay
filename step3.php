@@ -2,7 +2,7 @@
 include_once('config.php');
 
 // 验证用户有效性
-$verifyUser = YiqiplayClient::hasWeiboAuth($_REQUEST,$_SESSION);
+$verifyUser = YiqiplayClient::hasWeiboAuth("http://127.0.0.1/step3.php");
 
 if( !$verifyUser['value'] )
 {
