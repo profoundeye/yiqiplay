@@ -29,7 +29,6 @@ $searchService = new SearchService();
 $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish);
 
 //var_dump($msgarr);	
-
 ?>
 
 
@@ -45,18 +44,25 @@ $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $
 <p id="follow_us"><a href="">关注@一起play</a></p>
 <p id="m_head">一人学跳舞没动力？一人看电影觉得无聊？想找个伴去旅行？一个人去健身难坚持？一起play，给你找玩伴！</p>
 <div class="main choose">
-<form >
+<form name="ido" action="post.php" method="post">
 <div class="step">
 	<em class="sayhi">一起play为你找到了以下城玩伴，他们也和你一样想去玩</em>
     <ul class="man-list">
 
 	<?foreach($msgarr as $m){ $user=$m->getUser();?>
     	<li>
-        	<a href="<?=$user->getProfileUrl()?>">
-        		<img src="<?=$user->getSnsproimg()?>" />
-            	<em><?=$user->getUsername()?></em>
-                <span>浙江，杭州</span>
-            </a>
+        <label>
+        	<input name="who[]" class="who" type="checkbox" value="<?=$user->getUsername()?>" checked="checked" /> 
+             
+             <img src="<?=$user->getSnsproimg()?>" />
+         </label>     	
+        		
+            	<a href="<?=$user->getProfileUrl()?>">
+                <em><?=$user->getUsername()?></em>
+                </a>
+
+                <span>浙江，杭州</span>  
+           
         </li>
     <?}?>
     </ul>
@@ -66,6 +72,9 @@ $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $
      </div>
 </div>
 </form>
+<script type="application/javascript">
+
+</script>
 </div>
 <p id="foot">copyright by yiqiplay@163.com</p>
 </body>

@@ -918,6 +918,6 @@ class OAuthUtil {
     	}
     	return $mime;
     }
-	
+} 
+?>
 
-}

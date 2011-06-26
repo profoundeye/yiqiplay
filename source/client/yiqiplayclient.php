@@ -1,6 +1,6 @@
 <?php
 include_once(SOURCE."/client/weiboclient.php");
-//include_once( "config.php" );
+include_once( "config.php" );
 include_once( SOURCE."/data/message.php" );
 include_once( SOURCE."/data/user.php" );
 include_once( SOURCE."/data/location.php" );
