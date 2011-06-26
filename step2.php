@@ -66,6 +66,9 @@ $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $
      </div>
 </div>
 </form>
+<script type="application/javascript">
+
+</script>
 </div>
 <p id="foot">copyright by yiqiplay@163.com</p>
 </body>

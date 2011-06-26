@@ -19,9 +19,9 @@ $result = YiqiplayClient::hasWeiboAuth();
 	<li class="step_1">
     	<em>第一步，选择一起play的活动类型</em>
         <ul class="dotype">
-        	<li><input name="dotype" type="radio" value="我想去" />我想去</li>
-        	<li><input name="dotype" type="radio" value="我想学" />我想学</li>
-        	<li><input name="dotype" type="radio" value="我想玩" />我想玩</li>
+        	<li><img src="assets/wantgo.png" />  <input name="dotype" type="radio" value="我想去" />我想去</li>
+        	<li><img src="assets/wantlearn.png" /><input name="dotype" type="radio" value="我想学" />我想学</li>
+        	<li><img src="assets/wantplay.png" /><input name="dotype" type="radio" value="我想玩" />我想玩</li>
         </ul>
     </li>
 	<li class="step_2">
@@ -31,6 +31,16 @@ $result = YiqiplayClient::hasWeiboAuth();
     </li>
 </ol>
 </form>
+</form>
+<script type="application/javascript">
+var input = $("textarea");
+input.click(function(){
+	inputValue = input.html();
+	if(inputValue=='可以直接输入地点或活动'){
+			input.html("");
+		}
+	});
+</script>
 </div>
 <p id="foot">copyright by yiqiplay@163.com</p>
 </body>

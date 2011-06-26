@@ -77,10 +77,10 @@
 		height:135px;
 	}
 	.dowhat{
-		width:480px;
+		width:460px;
 		height:70px;
 		background:url(inputwhat.png) no-repeat center center;
-		padding:10px;
+		padding:10px 20px 10px 10px;
 		border:0;
 		padding-left:30px;
 		}
@@ -94,11 +94,15 @@
 		}
 	.dotype li{
 		width:200px;
-		height:30px;
-		padding-top:150px;
+		height:175px;
+		padding-top:5px;
 		float:left;
-		background:url(bg01.png) no-repeat center center;
+		background:url(bg01.png) no-repeat 21px center;
 		text-align:center;
+		}
+	.dotype img{
+		display:block;
+		margin:0 auto;
 		}
 	.sayhi{
 		height:70px;
