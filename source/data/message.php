@@ -1,5 +1,4 @@
 ﻿<?php
-
 include_once( SOURCE."/data/user.php" );
 class Message{
 	private $mid;

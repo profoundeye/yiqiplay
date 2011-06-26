@@ -1,8 +1,6 @@
 <?
 include_once('config.php');
-
 $result = YiqiplayClient::hasWeiboAuth();
-
 ?>
 <!DOCTYPE HTML>
 <html>
