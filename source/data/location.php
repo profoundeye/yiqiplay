@@ -63,5 +63,15 @@ class Location{
 		return "lid=".$this->lid.", province=".$this->province.", city="
 			.$this->city.", county=".$this->county.", point=".$this->point;
 	}
+	
+	public static function getLocationFromId($id, $provinces){
+		$pid = floor($id/1000);
+		$cid = $id - $pid*1000;
+		$pname = isset($provinces[$pid]['name'])?$provinces[$pid]['name']:" ";
+		$cities = $provinces[$pid]['cities'];
+		$cname = isset($cities[$cid])?$cities[$cid]:" ";
+		
+		return array('province' => $pname, 'city'=>$cname);
+	}
 }
 ?>
