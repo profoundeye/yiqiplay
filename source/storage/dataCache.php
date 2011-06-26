@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once("..\common\common.php"); 
 class DataCache{
 	private $host = "127.0.0.1";

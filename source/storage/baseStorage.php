@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 abstract class BaseStorage{
 	private $conn;
 	private $host = "localhost";

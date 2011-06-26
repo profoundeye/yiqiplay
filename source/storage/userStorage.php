@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once("..\storage\baseStorage.php"); 
 include_once("..\data\user.php"); 
 include_once("..\storage\dataCache.php"); 

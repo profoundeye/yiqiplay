@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 include_once(SOURCE."/client/yiqiplayclient.php");
 
 
@@ -11,7 +11,7 @@ class SearchService{
 	
 	function searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish){
 		$yqpClient = $this->initClient($oAuthToken, $oAuthTokenSecret);
-		$msgArr = $yqpClient->searchKeyword($acttype.$wish, 30);
+		$msgArr = $yqpClient->searchKeyword($acttype.$wish, 15);
 		return $msgArr;
 	}
 

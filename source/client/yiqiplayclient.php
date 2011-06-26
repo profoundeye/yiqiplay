@@ -202,15 +202,16 @@ class YiqiplayClient
 		$search_list = $this->WBclient->search_status($keyword);
 		
 		$arr_message = array();
-		
+		$i = 0;
 		foreach ( $search_list as $key => $arr_wb)
 		{
-		
 			$tmp_wb = $this->translateMessage($arr_wb);
-			
 			$arr_message[$key] = $tmp_wb;
 			unset($tmp_wb);
-		
+			$i++;
+			if ($i >= $result_num) {
+				break;
+			}
 		}
 		
 		

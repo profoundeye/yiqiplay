@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Keyindex{
 	private $word = "";
 	private $mid = -1;
