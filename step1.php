@@ -1,6 +1,10 @@
 <?
 include_once('config.php');
+
 $result = YiqiplayClient::hasWeiboAuth();
+if(!$result){
+	header('Location: '.$result['aurl']);
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -32,7 +36,7 @@ $result = YiqiplayClient::hasWeiboAuth();
 </ol>
 </form>
 </form>
-<script type="application/javascript">
+<script type="text/javascript">
 var input = $("textarea");
 input.click(function(){
 	inputValue = input.html();

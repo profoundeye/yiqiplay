@@ -1,9 +1,17 @@
 ﻿<?php
 
 include_once('config.php');
+
+$result = YiqiplayClient::hasWeiboAuth();
+if(!$result){
+	header('Location: '.$result['aurl']);
+}
+
+
 include_once('.\source\service\searchService.php');
 include_once(SOURCE.'\data\user.php');
 include_once(SOURCE.'\data\message.php');
+
 if(!isset($_SESSION['accessKey'])){
 	header('Location: accredit.php');
 }
@@ -45,14 +53,16 @@ $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $
 <p id="m_head">一人学跳舞没动力？一人看电影觉得无聊？想找个伴去旅行？一个人去健身难坚持？一起play，给你找玩伴！</p>
 <div class="main choose">
 <form name="ido" action="post.php" method="post">
+<input type="hidden" value="<?=$wish?>" name="ido" />
+<input type="hidden" value="<?=$acttype?>" name="dotype" />
 <div class="step">
-	<em class="sayhi">一起play为你找到了以下城玩伴，他们也和你一样想去玩</em>
+	<em class="sayhi">一起play为你找到了以下城玩伴，他们也和你一样想去<?=$wish?></em>
     <ul class="man-list">
 
 	<?foreach($msgarr as $m){ $user=$m->getUser();?>
     	<li>
         <label>
-        	<input name="who[]" class="who" type="checkbox" value="<?=$user->getUsername()?>" checked="checked" /> 
+        	<input name="metionUser[]" class="who" type="checkbox" value="<?=$user->getUsername()?>" checked="checked" /> 
              
              <img src="<?=$user->getSnsproimg()?>" />
          </label>     	
