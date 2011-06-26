@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Keyword{
 	private $kid;
 	private $word;

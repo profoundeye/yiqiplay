@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 function randStr($length){
 	$strtmp = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	$str = "";

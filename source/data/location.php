@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Location{
 	private $lid = -1;
 	private $province = "";
