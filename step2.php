@@ -12,6 +12,7 @@ include_once('.\source\service\searchService.php');
 include_once(SOURCE.'\data\user.php');
 include_once(SOURCE.'\data\message.php');
 
+include_once(SOURCE.'\data\location.php');
 if(!isset($_SESSION['accessKey'])){
 	header('Location: accredit.php');
 }
@@ -36,6 +37,7 @@ $searchService = new SearchService();
 
 $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish);
 
+$provinces = unserialize(file_get_contents('provinces.txt'));
 //var_dump($msgarr);	
 ?>
 
@@ -70,8 +72,8 @@ $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $
             	<a href="<?=$user->getProfileUrl()?>">
                 <em><?=$user->getUsername()?></em>
                 </a>
-
-                <span>浙江，杭州</span>  
+                <?$homeid = $user->getHomeid(); $locstr = Location::getLocationFromId($homeid, $provinces);?>
+                <span><?=$locstr['province']?>，<?=$locstr['city']?></span>  
            
         </li>
     <?}?>
