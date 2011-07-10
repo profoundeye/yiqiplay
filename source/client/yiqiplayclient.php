@@ -1,6 +1,6 @@
 <?php
-include_once(SOURCE."/client/weiboclient.php");
 include_once( "config.php" );
+include_once( SOURCE."/client/weiboclient.php");
 include_once( SOURCE."/data/message.php" );
 include_once( SOURCE."/data/user.php" );
 include_once( SOURCE."/data/location.php" );
@@ -101,18 +101,8 @@ class YiqiplayClient
 	 {
 		$arr_user = $this->WBclient->verify_credentials();
 		
-		$yquser = new User();
-		
-		$yquser->setUsername($arr_user['name']);
-		$yquser->setGender($arr_user['gender']);
-		$yquser->setAge(-1); // no age for sina weibo
-		$yquser->setBirthday('');// no birthday for sina weibo
-		$yquser->setHomeid($arr_user['province']*1000+$arr_user['city']);
-		$yquser->setSnstype(SNSTYPE_SINA);
-		$yquser->setSnsuid($arr_user['id']);
-		$yquser->setExtend(json_encode($arr_user));		
-		
-		return $yquser;	 
+	
+		return $this->translateUser($arr_user);
 
 	 }
 
@@ -122,21 +112,8 @@ class YiqiplayClient
 	 function show_user($uid_or_name)
 	 {
 		$arr_user = $this->WBclient->show_user($uid_or_name);
-		
-		$yquser = new User();
-		
-		$yquser->setUid($arr_user['id']);
-		$yquser->setUsername($arr_user['name']);
-		$yquser->setGender($arr_user['gender']);
-		$yquser->setAge(-1); // no age for sina weibo
-		$yquser->setBirthday('');// no birthday for sina weibo
-		$yquser->setHomeid($arr_user['province']*1000+$arr_user['city']);
-		$yquser->setSnstype(SNSTYPE_SINA);
-		$yquser->setSnsuid($arr_user['id']);
-		$yquser->setExtend(json_encode($arr_user));
-		
-		
-		return $yquser;
+
+		return $this->translateUser($arr_user);
 	 }
 
 	/**
