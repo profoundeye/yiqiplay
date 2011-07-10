@@ -29,7 +29,7 @@
 	}
 	
 .main{
-	height:580px;
+	height:600px;
 	width:100%;
 	background:url(1.png) repeat-x;
 }
@@ -115,8 +115,14 @@
 	}
 	.man-list li{
 		float:left;
-		width:195px;
-		height:75px;
+		width:203px;
+		}
+	.man-list .comment{
+		clear:both;
+		width:157px;
+		height:40px;
+		background:url(comment.gif) no-repeat 22px 3px ;
+		padding:13px 26px 26px 29px;
 		}
 	.man-list img{
 		width:50px;

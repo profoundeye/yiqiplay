@@ -23,9 +23,9 @@ if(!$result){
 	<li class="step_1">
     	<em>第一步，选择一起play的活动类型</em>
         <ul class="dotype">
-        	<li><img src="assets/wantgo.png" />  <input name="dotype" type="radio" value="我想去" />我想去</li>
-        	<li><img src="assets/wantlearn.png" /><input name="dotype" type="radio" value="我想学" />我想学</li>
-        	<li><img src="assets/wantplay.png" /><input name="dotype" type="radio" value="我想玩" />我想玩</li>
+        	<li><label><img src="assets/wantgo.png" />  <input name="dotype" type="radio" value="我想去" />我想去</label></li>
+        	<li><label><img src="assets/wantlearn.png" /><input name="dotype" type="radio" value="我想学" />我想学</label></li>
+        	<li><label><img src="assets/wantplay.png" /><input name="dotype" type="radio" value="我想玩" />我想玩</label></li>
         </ul>
     </li>
 	<li class="step_2">

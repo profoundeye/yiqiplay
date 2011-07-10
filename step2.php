@@ -38,7 +38,15 @@ $searchService = new SearchService();
 $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish);
 
 $provinces = unserialize(file_get_contents('provinces.txt'));
-//var_dump($msgarr);	
+//var_dump($msgarr);
+
+function utf8Substr($str, $from, $len)
+{
+    return preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
+                       '((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s',
+                       '$1',$str);
+}
+	
 ?>
 
 
@@ -74,7 +82,7 @@ $provinces = unserialize(file_get_contents('provinces.txt'));
                 </a>
                 <?$homeid = $user->getHomeid(); $locstr = Location::getLocationFromId($homeid, $provinces);?>
                 <span><?=$locstr['province']?>，<?=$locstr['city']?></span>  
-           
+           		<p class="comment"><?=utf8Substr($m->getContent(),0,26)?></p>
         </li>
     <?}?>
     </ul>
