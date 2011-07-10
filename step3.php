@@ -1,19 +1,6 @@
 <?php
 include_once('config.php');
 
-// 验证用户有效性
-$verifyUser = YiqiplayClient::hasWeiboAuth("http://127.0.0.1/step3.php");
-
-if( !$verifyUser['value'] )
-{
-	echo "<a href=\"".$verifyUser['aurl']."\">click here </a>";
-	exit();
-} else {
-
-	$_SESSION['accessKey'] = $accessKey = $verifyUser['accessKey'];
-
-}
-
 $yqp = new YiqiplayClient($_SESSION['accessKey']['oauth_token'],$_SESSION['accessKey']['oauth_token_secret']);
 $cur_user = $yqp->verify_credentials();
 if(isset($_POST['WeiboContent']))

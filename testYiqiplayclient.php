@@ -1,17 +1,13 @@
 <html><head><meta http-equiv="Content-Type" content="text/html;charset=utf-8"></head>
 <?php
 
-session_start();
-include_once("../../config.php");
-include_once(SOURCE."/client/yiqiplayclient.php");
+include_once("config.php");
 
-
+echo "session<br/>";
 print_r($_SESSION);
 
-print_r($_REQUEST);
+$verifyUser = YiqiplayClient::hasWeiboAuth("http://localhost/testYiqiplayclient.php");
 
-
-$verifyUser = YiqiplayClient::hasWeiboAuth($_REQUEST,$_SESSION);
 print_r($verifyUser);
 
 if( !$verifyUser['value'] )
@@ -24,11 +20,15 @@ if( !$verifyUser['value'] )
 
 }
 
+echo "session again <br/>";
+print_r($_SESSION);
 
 $yqp = new YiqiplayClient($_SESSION['accessKey']['oauth_token'],$_SESSION['accessKey']['oauth_token_secret']);
 print_r($yqp->verify_credentials());
-// echo "<br /><br /><br /><br /><br />";
-// print_r($yqp->show_user("will_zhangv"));
+echo "<br /><br /><br /><br /><br />";
+print_r($yqp->show_user("will_zhangv"));
+
+/**
 // echo "<br /><br /><br /><br /><br />";
 //print_r($yqp->user_timeline("will_zhangv"));
 //echo "<br /><br /><br /><br /><br />";
@@ -41,5 +41,5 @@ echo "<br /><br /><br /><br /><br />";
 
 //$yqp->update("测试一条看看");
 exit();
-
+**/
 ?>
