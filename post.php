@@ -37,5 +37,6 @@ if(isset($_POST['metionUser'])){
 	$yqp->update($metion_str);
 }
 
+header('Location: succeed.php');
 
 ?>
