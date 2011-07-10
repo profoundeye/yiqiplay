@@ -26,11 +26,11 @@ print_r($_SESSION);
 $yqp = new YiqiplayClient($_SESSION['accessKey']['oauth_token'],$_SESSION['accessKey']['oauth_token_secret']);
 print_r($yqp->verify_credentials());
 echo "<br /><br /><br /><br /><br />";
-print_r($yqp->show_user("will_zhangv"));
+print_r($yqp->show_user("小御花园"));
 
 /**
-// echo "<br /><br /><br /><br /><br />";
-//print_r($yqp->user_timeline("will_zhangv"));
+echo "<br /><br /><br /><br /><br />";
+print_r($yqp->user_timeline("小御花园"));
 //echo "<br /><br /><br /><br /><br />";
 //$key = "我要滑雪";
 //print_r($yqp->searchTrend($key));
