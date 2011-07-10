@@ -1,4 +1,3 @@
-
 <?php
 //是否已经验证，如果已经验证，跳转到step1.php,否则到授权页面
 include_once('config.php');

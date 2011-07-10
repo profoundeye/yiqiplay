@@ -7,6 +7,5 @@
 define( "WB_AKEY" , '3115905236' ); //key from weav_2009@126.com 
 define( "WB_SKEY" , 'be981b8cc5c07ec277a35286d6c0eb79' );
 
-define("YQW_PATH","/weibodemo");
 define("SNSTYPE_SINA","1");
 ?>
