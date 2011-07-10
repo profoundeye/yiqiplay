@@ -211,6 +211,41 @@
 	margin-right:10px;
 	margin-top:20px;
 }
+
+.poster{
+	font-size:18px;
+	margin:0 auto;
+	text-align:center;
+}
+
+.poster.cong{
+	margin-top:120px;
+}
+
+.poster.btn{
+	margin-top:30px;
+}
+
+.large {
+	font-size:24px;
+}
+
+.poster .btnself{
+	width:166px;
+	height:52px;
+	background:url(button3.png) no-repeat;
+	border:0px;
+}
+
+.poster .btnplan{
+	width:166px;
+	height:52px;
+	background:url(button4.png) no-repeat;
+	border:0px;
+	margin-left:8px;
+}
+
+
 /*
 KISSY CSS Reset
 理念：1. reset 的目的不是清除浏览器的默认样式，这仅是部分工作。清除和重置是紧密不可分的。
@@ -267,3 +302,4 @@ summary, time, mark, audio, video {
     padding: 0;
 }
 mark { background: #ff0; }
+
