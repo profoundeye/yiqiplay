@@ -72,6 +72,7 @@
 		display:block;
 		height:35px;
 		font-size:15px;
+		font-weight:bolder;
 	}
 	.step_2{
 		height:135px;
@@ -83,6 +84,7 @@
 		padding:10px 20px 10px 10px;
 		border:0;
 		padding-left:30px;
+		outline:0;
 		}
 	.do{
 		height:87px;
@@ -91,6 +93,7 @@
 		border:0;
 		text-indent:-9000px;
 		float:right;
+		margin-right:15px;
 		}
 	.dotype li{
 		width:200px;
