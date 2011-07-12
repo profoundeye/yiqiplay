@@ -19,4 +19,5 @@
 		$_SESSION['accessKey'] = $accessKey = $verifyUser['accessKey'];
 
 	}
-?>
+
+?>
