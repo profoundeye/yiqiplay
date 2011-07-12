@@ -37,6 +37,11 @@ $searchService = new SearchService();
 
 $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish);
 
+if(sizeof($msgarr) == 0) {
+	header('Location: step3.php?dotype='.$acttype."&ido=".$wish);	
+}
+
+
 $provinces = unserialize(file_get_contents('provinces.txt'));
 //var_dump($msgarr);
 

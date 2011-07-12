@@ -11,7 +11,10 @@ class SearchService{
 	
 	function searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish){
 		$yqpClient = $this->initClient($oAuthToken, $oAuthTokenSecret);
-		$msgArr = $yqpClient->searchKeyword($acttype.$wish, 9);
+		//$cur_user = $yqpClient->verify_credentials();
+		//$msgArr = $yqpClient->searchKeyword($acttype.$wish, 30);
+		
+		//$msgArrSort = array();
 		return $msgArr;
 	}
 
