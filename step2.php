@@ -87,7 +87,7 @@ $provinces = unserialize(file_get_contents('provinces.txt'));
     </ul>
      <div class="hi">
      	<button type="submit" >say hi，和玩伴们组团</button>
-        <span><a href="step3.php?ido=<?=$wish?>&dotype=<?=$acttype?>">算了，让我继续孤独吧</a></span>
+        <span><a href="step3.php?txt=1&ido=<?=$wish?>&dotype=<?=$acttype?>">算了，让我继续孤独吧</a></span>
      </div>
 </div>
 </form>
