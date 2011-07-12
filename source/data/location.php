@@ -67,9 +67,15 @@ class Location{
 	public static function getLocationFromId($id, $provinces){
 		$pid = floor($id/1000);
 		$cid = $id - $pid*1000;
-		$pname = isset($provinces[$pid]['name'])?$provinces[$pid]['name']:" ";
-		$cities = $provinces[$pid]['cities'];
-		$cname = isset($cities[$cid])?$cities[$cid]:" ";
+		$pid = isset($provinces[$pid])?pid:100;
+		$pname = $provinces[$pid]['name'];
+		
+		if ($pid != 100) { // the pid is other place
+			$cities = $provinces[$pid]['cities'];
+			$cname = isset($cities[$cid])?$cities[$cid]:" ";
+		} else {
+			$cname = " ";
+		}
 		
 		return array('province' => $pname, 'city'=>$cname);
 	}
