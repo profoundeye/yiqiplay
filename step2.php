@@ -83,10 +83,10 @@ function utf8Substr($str, $from, $len)
          </label>     	
         		
             	<a href="<?=$user->getProfileUrl()?>">
-                <em><?=utf8Substr($user->getUsername(),0,8)?></em>
+                <em class="name"><?=utf8Substr($user->getUsername(),0,8)?></em>
                 </a>
                 <?$homeid = $user->getHomeid(); $locstr = Location::getLocationFromId($homeid, $provinces);?>
-                <span><?=$locstr['province']?>，<?=$locstr['city']?></span>  
+                <span class="location"><?=$locstr['province']?>，<?=$locstr['city']?></span>  
            		<p class="comment"><?=utf8Substr($m->getContent(),0,26)?></p>
         </li>
     <?}?>
