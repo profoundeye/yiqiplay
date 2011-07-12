@@ -37,15 +37,14 @@ $searchService = new SearchService();
 
 $msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish);
 
+if(sizeof($msgarr) == 0) {
+	header('Location: step3.php?dotype='.$acttype."&ido=".$wish);	
+}
+
+
 $provinces = unserialize(file_get_contents('provinces.txt'));
 //var_dump($msgarr);
 
-function utf8Substr($str, $from, $len)
-{
-    return preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
-                       '((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s',
-                       '$1',$str);
-}
 	
 ?>
 
@@ -78,17 +77,17 @@ function utf8Substr($str, $from, $len)
          </label>     	
         		
             	<a href="<?=$user->getProfileUrl()?>">
-                <em><?=utf8Substr($user->getUsername(),0,8)?></em>
+                <em class="name"><?=utf8Substr($user->getUsername(),0,8)?></em>
                 </a>
                 <?$homeid = $user->getHomeid(); $locstr = Location::getLocationFromId($homeid, $provinces);?>
-                <span><?=$locstr['province']?>，<?=$locstr['city']?></span>  
+                <span class="location"><?=$locstr['province']?>，<?=$locstr['city']?></span>  
            		<p class="comment"><?=utf8Substr($m->getContent(),0,26)?></p>
         </li>
     <?}?>
     </ul>
      <div class="hi">
      	<button type="submit" >say hi，和玩伴们组团</button>
-        <span><a href="step3.php?ido=<?=$wish?>&dotype=<?=$acttype?>">算了，让我继续孤独吧</a></span>
+        <span><a href="step3.php?txt=1&ido=<?=$wish?>&dotype=<?=$acttype?>">算了，让我继续孤独吧</a></span>
      </div>
 </div>
 </form>

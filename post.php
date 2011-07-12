@@ -23,20 +23,23 @@ $cur_user = $yqp->verify_credentials();
 $dotype=isset($_POST['dotype'])?$_POST['dotype']:"我想去";
 $ido=isset($_POST['ido'])?$_POST['ido']:"subway";
 
-$metion_str = " $dotype $ido";
-if(isset($_POST['metionUser'])){
-
+if(isset($_POST['metionUser']) && sizeof($_POST['metionUser'])>0){
+	$metionUser = $_POST['metionUser'];
+	
+	$act = utf8Substr($dotype, 2, 1);
+	$metion_str = "hi, $dotype $ido 我通过@一起play 找到了大家，让我们组队一起".$act."吧。";
 	//$metion_str = "";
 	
-	foreach($_POST['metionUser'] as $k => $v){
+	foreach($metionUser as $k => $v){
 	
 		$metion_str.="@$v ";
 	}
 	
 	//echo $metion_str;
-	$yqp->update($metion_str);
+	$yqp->update($metion_str."。#一起play#");
+	header('Location: succeed.php');
+} else {
+	header('Location: step3.php?txt=0&dotype='.$dotype."&ido=".$ido);
 }
-
-header('Location: succeed.php');
 
 ?>
