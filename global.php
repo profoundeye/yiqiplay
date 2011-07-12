@@ -12,7 +12,7 @@
 
 	if( !$verifyUser['value'] )
 	{
-		header("Location:".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']);
+		header("Location: index.php"]);
 		
 	} else {
 

@@ -6,7 +6,7 @@ $cur_user = $yqp->verify_credentials();
 if(isset($_POST['WeiboContent']))
 {
 	$update = $yqp->update(($_POST['WeiboContent']));
-	header("Location: http://weibo.com/".$cur_user->getUid());
+	header("Location: succeed.php");
 }
 
 ?>
