@@ -23,7 +23,13 @@ $cur_user = $yqp->verify_credentials();
 $dotype=isset($_POST['dotype'])?$_POST['dotype']:"我想去";
 $ido=isset($_POST['ido'])?$_POST['ido']:"subway";
 
-$metion_str = " $dotype $ido";
+$act = "去";
+if($dotype == "我想学") {
+	$act = "学";
+} elseif($dotype == "我想玩") {
+	$act = "玩";
+} 
+$metion_str = "hi, $dotype $ido 我通过@一起play 找到了大家，让我们组队一起".$act."吧。";
 if(isset($_POST['metionUser'])){
 
 	//$metion_str = "";
@@ -34,7 +40,7 @@ if(isset($_POST['metionUser'])){
 	}
 	
 	//echo $metion_str;
-	$yqp->update($metion_str);
+	$yqp->update($metion_str."。#一起play#");
 }
 
 header('Location: succeed.php');
