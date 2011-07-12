@@ -12,11 +12,11 @@
 
 	if( !$verifyUser['value'] )
 	{
-		header("Location: index.php"]);
+		header("Location: index.php");
 		
 	} else {
 
 		$_SESSION['accessKey'] = $accessKey = $verifyUser['accessKey'];
 
 	}
-?>
+?>
