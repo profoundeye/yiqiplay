@@ -78,7 +78,7 @@ function utf8Substr($str, $from, $len)
          </label>     	
         		
             	<a href="<?=$user->getProfileUrl()?>">
-                <em><?=$user->getUsername()?></em>
+                <em><?=utf8Substr($user->getUsername(),0,8)?></em>
                 </a>
                 <?$homeid = $user->getHomeid(); $locstr = Location::getLocationFromId($homeid, $provinces);?>
                 <span><?=$locstr['province']?>，<?=$locstr['city']?></span>  
