@@ -74,7 +74,7 @@ class Location{
 			$cities = $provinces[$pid]['cities'];
 			$cname = isset($cities[$cid])?$cities[$cid]:" ";
 		} else {
-			$cname = "δ֪";
+			$cname = " ";
 		}
 		
 		return array('province' => $pname, 'city'=>$cname);
