@@ -22,4 +22,12 @@ define( "YQP_TOKEN_SECRET" , 'b77c76294836ff1b07fc0e378fdb8fb1');
 //define( "WB_AKEY" , '3115905236' ); //key from weav_2009@126.com 
 //define( "WB_SKEY" , 'be981b8cc5c07ec277a35286d6c0eb79' );
 
+
+
+function utf8Substr($str, $from, $len)
+{
+    return preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
+                       '((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s',
+                       '$1',$str);
+}
 ?>

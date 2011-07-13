@@ -72,6 +72,7 @@
 		display:block;
 		height:35px;
 		font-size:15px;
+		font-weight:bolder;
 	}
 	.step_2{
 		height:135px;
@@ -83,6 +84,7 @@
 		padding:10px 20px 10px 10px;
 		border:0;
 		padding-left:30px;
+		outline:0;
 		}
 	.do{
 		height:87px;
@@ -91,6 +93,7 @@
 		border:0;
 		text-indent:-9000px;
 		float:right;
+		margin-right:15px;
 		}
 	.dotype li{
 		width:200px;
@@ -142,6 +145,9 @@
 	}
 	.man-list span{
 		color:#ccc;	
+	}
+	.man-list span.location{
+		color:#666;
 	}
 	.man-list em a{
 		color:#0015b1;
@@ -285,8 +291,8 @@ small { font-size: 12px; } /* 小于 12px 的中文很难阅读，让 small 正�
 ul, ol { list-style: none; }
 
 /** 重置文本格式元素 **/
-a { text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { text-decoration: none; color:#0015b1;}
+a:hover { text-decoration: underline; color:#0015b1;}
 
 sup { vertical-align: text-top; } /* 重置，减少对行高的影响 */
 sub { vertical-align: text-bottom; }

@@ -23,7 +23,7 @@ if(!$result){
 	<li class="step_1">
     	<em>第一步，选择一起play的活动类型</em>
         <ul class="dotype">
-        	<li><label><img src="assets/wantgo.png" />  <input name="dotype" type="radio" value="我想去" />我想去</label></li>
+        	<li><label><img src="assets/wantgo.png" />  <input name="dotype" type="radio" value="我想去" checked="checked" />我想去</label></li>
         	<li><label><img src="assets/wantlearn.png" /><input name="dotype" type="radio" value="我想学" />我想学</label></li>
         	<li><label><img src="assets/wantplay.png" /><input name="dotype" type="radio" value="我想玩" />我想玩</label></li>
         </ul>
@@ -40,9 +40,17 @@ if(!$result){
 var input = $("textarea");
 input.click(function(){
 	inputValue = input.html();
-	if(inputValue=='可以直接输入地点或活动'){
-			input.html("");
-		}
+	//if(inputValue=='可以直接输入地点或活动'){
+		//console.debug($("[checked='checked']"));
+		var value = $('input[type="radio"]:checked').attr("value");
+			input.html(value);
+			$("li.step_2>em").html("第二步，"+value+"？");
+			
+	//	}
+	});
+var dotype = $("ul.dotype");
+dotype.click(function(){
+	
 	});
 </script>
 </div>
