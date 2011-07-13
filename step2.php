@@ -35,7 +35,7 @@ $oAuthTokenSecret = $_SESSION['accessKey']['oauth_token_secret'];
 	
 $searchService = new SearchService();
 
-$msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $acttype, $wish);
+$msgarr = $searchService->searchWish($oAuthToken, $oAuthTokenSecret, $wish);
 
 if(sizeof($msgarr) == 0) {
 	header('Location: step3.php?dotype='.$acttype."&ido=".$wish);	

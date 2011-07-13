@@ -36,7 +36,7 @@ if(isset($_GET['txt'])){
 		$cur_user_raw = json_decode($cur_user->getExtend()); 
 		?>
             <img class="avater" src="<?php echo $cur_user_raw->profile_image_url?>" />
-            <textarea name="WeiboContent">@一起play:<?echo $_GET['dotype'];echo "&nbsp;";echo $_GET['ido'];echo "&nbsp;";?>有人愿意一起吗？</textarea>
+            <textarea name="WeiboContent">@一起play:<?echo $_GET['ido'];echo "&nbsp;";?>有人愿意一起吗？</textarea>
 			<button class="fb" type="submit">发布计划</button>
             <button class="xg" type="button" onclick="javascript:window.location.href='index.php'">修改计划</button>
          </div>
