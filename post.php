@@ -39,7 +39,7 @@ if(isset($_POST['metionUser']) && sizeof($_POST['metionUser'])>0){
 	$yqp->update($metion_str."。#一起play# http://t.cn/he90Cz ");
 	header('Location: succeed.php');
 } else {
-	header('Location: step3.php?txt=0&dotype='.$dotype."&ido=".$ido);
+	header('Location: step3.php?txt=1&dotype='.$dotype."&ido=".$ido);
 }
 
 ?>
