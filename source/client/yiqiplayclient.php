@@ -1,5 +1,5 @@
 <?php
-include_once( "config.php" );
+
 include_once( SOURCE."/client/weiboclient.php");
 include_once( SOURCE."/data/message.php" );
 include_once( SOURCE."/data/user.php" );
@@ -154,29 +154,28 @@ class YiqiplayClient
 	 function update($content)
 	 {
 		$arr_wb = $this->WBclient->update($content);
-		$wb = new Message();
-		$wb->setMid($arr_wb['mid']);
-		$wb->setSnstype(SNSTYPE_SINA);
-		$wb->setSnsmid($arr_wb['mid']);
-		$wb->setSnsuid($arr_wb['user']['id']);
-		$wb->setContent($arr_wb['text']);
-		$wb->setUhomeid($arr_wb['user']['province']*1000 + $arr_wb['user']['city']); 
-		$wb->setLocid($arr_wb['geo']['coordinates'][0].'|'.$arr_wb['geo']['coordinates'][1]);
-		
-		return $wb;
+		return self::translateMessage($arr_wb);
 	 }
 	/**
 	 * 一起Play官方微博发布求伴微博
-	 Todo:
 	 */
-	/**
+
+	 public static function yqp_update($content)
+	 {
+		$yqp_client = new WeiboClient( WB_AKEY , WB_SKEY , YQP_TOKEN , YQP_TOKEN_SECRET ); 
+		$arr_wb = $yqp_client->update($content);
+		return self::translateMessage($arr_wb);
+		
+	 }
+	 
+	 /**
 	 * 搜索关键词 - 直接调用搜索接口，有权限限制，可能失败
 	 */
 	 
 	 function searchKeyword ( $keyword , $result_num = 30)
 	 {
 	 
-		$search_list = $this->WBclient->search_status($keyword);
+		$search_list = $this->WBclient->search_status($keyword,$result_num);
 		
 		$arr_message = array();
 		$i = 0;
@@ -220,7 +219,7 @@ class YiqiplayClient
 
 	}
 	
-	private function translateUser($wb_user){
+	private static function translateUser($wb_user){
 		$user = new User();
 		$user->setUid($wb_user['id']);
 		$user->setUsername($wb_user['name']);
@@ -235,7 +234,7 @@ class YiqiplayClient
 		return $user;
 	}
 	
-	private function translateMessage($wb_msg) {
+	private static function translateMessage($wb_msg) {
 		$message = new Message();
 		$message->setMid($wb_msg['mid']);
 		$message->setSnstype(SNSTYPE_SINA);
@@ -244,7 +243,7 @@ class YiqiplayClient
 		$message->setContent($wb_msg['text']);
 		$message->setUhomeid($wb_msg['user']['province']*1000 + $wb_msg['user']['city']); 
 		$message->setLocid($wb_msg['geo']['coordinates'][0].'|'.$wb_msg['geo']['coordinates'][1]);
-		$message->setUser($this->translateUser($wb_msg['user']));
+		$message->setUser(self::translateUser($wb_msg['user']));
 		return $message;
 	}
 	/**

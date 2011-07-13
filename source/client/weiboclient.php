@@ -500,7 +500,7 @@ class WeiboClient
      * @return array 
      */ 
 	
-	function search_status( $keyword, $page = 1, $count = 30 ) 
+	function search_status( $keyword, $page = 1, $count = 100 ) 
     { 
         $param = array(); 
         // $param['q'] = OAuthUtil::urlencode_rfc3986($keyword); // 擦，sina的文档上说要urlencode，实际不用的

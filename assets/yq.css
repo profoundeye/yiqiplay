@@ -169,8 +169,14 @@
 		display:block;
 		height:68px;
 		text-indent:-10000px;
-		background:url(title1.png) no-repeat left center;
 		}
+	.alert0{
+		background:url(title0.png) no-repeat left center;
+	}
+
+	.alert1{
+		background:url(title1.png) no-repeat left center;
+	}
 	.xman .t{
 		background:url(bigbg.png) no-repeat center center;
 		height:200px;

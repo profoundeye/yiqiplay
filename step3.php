@@ -9,6 +9,12 @@ if(isset($_POST['WeiboContent']))
 	header("Location: succeed.php");
 }
 
+//assign Vars
+if(isset($_GET['txt'])){
+	$txt_style=$_GET['txt']%2; // txt取值为空、0、1，为防止被人随便写，取个模安全一下
+} else {
+	$txt_style=0;
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -23,7 +29,7 @@ if(isset($_POST['WeiboContent']))
 <p id="m_head">一人学跳舞没动力？一人看电影觉得无聊？想找个伴去旅行？一个人去健身难坚持？一起play，给你找玩伴！</p>
 <div class="main choose">
 	<div class="step xman">
-        <em>哇！你太强了，暂时还没有人和你有相同的play计划。不如通过自己和一起play官方微博发布你的计划，等待臭味相投的玩伴认领吧！</em>
+        <em class="alert<?echo $txt_style?>">哇！你太强了，暂时还没有人和你有相同的play计划。不如通过自己和一起play官方微博发布你的计划，等待臭味相投的玩伴认领吧！</em>
         <form name="pubWeibo" action="step3.php" method="post">
 		<div class="t">
 		<?php 
