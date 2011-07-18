@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 34
+/yiqiplay/!svn/ver/4/1/source/test
+END
+testKeywordStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/yiqiplay/!svn/ver/4/1/source/test/testKeywordStorage.php
+END
+testMessageStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/yiqiplay/!svn/ver/4/1/source/test/testMessageStorage.php
+END
+testDataCache.php
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/yiqiplay/!svn/ver/4/1/source/test/testDataCache.php
+END
+testLocationStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/yiqiplay/!svn/ver/4/1/source/test/testLocationStorage.php
+END
+testUserStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/yiqiplay/!svn/ver/4/1/source/test/testUserStorage.php
+END
+testKeyindexStorage.php
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/yiqiplay/!svn/ver/4/1/source/test/testKeyindexStorage.php
+END
