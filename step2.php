@@ -8,11 +8,11 @@ if(!$result){
 }
 
 
-include_once('.\source\service\searchService.php');
-include_once(SOURCE.'\data\user.php');
-include_once(SOURCE.'\data\message.php');
+include_once(SOURCE.'/service/searchService.php');
+include_once(SOURCE.'/data/user.php');
+include_once(SOURCE.'/data/message.php');
 
-include_once(SOURCE.'\data\location.php');
+include_once(SOURCE.'/data/location.php');
 if(!isset($_SESSION['accessKey'])){
 	header('Location: accredit.php');
 }
